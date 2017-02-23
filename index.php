@@ -46,7 +46,9 @@
 			<div class="row">
 			    <div class="col-md-4 col-md-offset-4">
 			<?php 
+				//here we get current page
 				isset($_REQUEST['page']) ? $page=$_REQUEST['page'] : $page='home';
+				//here we switch page and include right view
 				switch ($page) {
 					case 'login':
 						include('login.php');

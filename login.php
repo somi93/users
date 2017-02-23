@@ -1,8 +1,10 @@
 <?php 
 
+    //redirect to home in user in authenticated
     if(isset($_SESSION['name'])){
         header('location:index.php');
     } else { 
+        //when user submit login form we check regular expressions 
         if(isset($_POST['login-submit'])) {
 
             $email = mysqli_real_escape_string($connection, trim($_POST['email']));
@@ -10,6 +12,7 @@
             
             $errors = 0;
 
+            //if something is invalid we send message and change border color
             if(!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $email)) {
                 $email_error = "Invalid Email";
                 $email_border = "border:1px solid#cc5555;";
@@ -28,6 +31,7 @@
                 $password_border = "border:1px solid#ddd;";
             }
 
+            //if there is no errors than we can check login parameters
             if($errors==0) {
                 $password = crypt($password, '$6$rounds=5000$saltystring$'); 
                 $user = new User();

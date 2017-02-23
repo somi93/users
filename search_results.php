@@ -1,4 +1,5 @@
 <?php 
+	//if user is authenticated than we display table with results
     if(isset($_SESSION['name'])){
 ?>
 		<table class="table table-responsive table-bordered">
@@ -20,7 +21,8 @@
     	}
 ?>
 		</table>
-<?php    	
+<?php 
+	//if user is not authenticated than we display login form   	
     } else{
 ?>
 	<div class="alert alert-warning">
